@@ -211,7 +211,7 @@
     <section class="hero">
       <p class="eyebrow">尹姓专属 · 2026 丙午马年</p>
       <h1>给宝宝一个<br>经得住长大的名字</h1>
-      <p class="lead">按杭州生活、东北普通话家庭的真实使用场景整理。整体采用清爽自然、简约克制、松弛明亮和现代书卷四种当代风格；32 个精选名与 1000+ 个双典组合都说明来源性质。</p>
+      <p class="lead">按杭州生活、东北普通话家庭的真实使用场景整理。默认先看低相似候选：过滤同音全名、正反组合和高频用字；需要更多灵感时仍可查看 2000+ 个完整组合。</p>
       <div class="facts">
         <span class="pill">32 个人工精选</span>
         <span class="pill" id="poolCount">正在计算组合库</span>
@@ -227,8 +227,8 @@
     </section>
 
     <section class="generator" aria-labelledby="generator-title">
-      <h2 id="generator-title">海量随机起名器</h2>
-      <p class="intro">从有原文依据的现代字库组合，已减少“弘、谦、敬、德、毅、仪、徽”等偏传统用字，也避开“梓、宸、轩、诺”式网红字堆叠。下方 32 个精选名不会再次放进随机池；同一页继续均匀分散首字与尾字。</p>
+      <h2 id="generator-title">低相似名字库</h2>
+      <p class="intro">默认候选池会限制每个单字与同音字的全局出现次数，删除完整同音名和“川砚 / 砚川”式正反组合，并使用固定顺序分页，刷新后不会重新洗牌。完整组合库仍保留为灵感参考，并明确提示其中相似名较多。</p>
       <div class="generator-controls">
         <label>性别
           <select id="genGender"><option value="boy">男孩</option><option value="girl">女孩</option></select>
@@ -237,7 +237,7 @@
           <select id="genStyle"><option value="all">不限风格</option><option value="清爽自然">清爽自然</option><option value="简约克制">简约克制</option><option value="松弛明亮">松弛明亮</option><option value="现代书卷">现代书卷</option></select>
         </label>
         <label>组合范围
-          <select id="genQuality"><option value="all">全部组合（完整池）</option><option value="strict">优先相容（精简池）</option></select>
+          <select id="genQuality"><option value="diverse">低相似候选（推荐）</option><option value="strict">来源相容组合</option><option value="all">全部组合（相似名较多）</option></select>
         </label>
       </div>
       <div class="generator-meta" id="generatorMeta" aria-live="polite"></div>
@@ -246,7 +246,7 @@
         <span class="page-status" aria-live="polite"></span>
         <button class="action secondary" type="button" data-page="next">下一页</button>
       </nav>
-      <section id="generatedCards" class="cards" aria-label="随机生成的名字"></section>
+      <section id="generatedCards" class="cards" aria-label="分页候选名字"></section>
       <nav class="pagination" aria-label="随机名字底部分页">
         <button class="action secondary" type="button" data-page="prev">上一页</button>
         <span class="page-status" aria-live="polite"></span>
@@ -273,7 +273,7 @@
         </select>
       </div>
       <div class="actions">
-        <button class="action" id="random" type="button">精选换一组</button>
+        <button class="action" id="random" type="button">精选分组看</button>
         <button class="action secondary" type="button" onclick="window.print()">打印</button>
       </div>
     </section>
@@ -898,14 +898,14 @@
     "诸葛亮《诫子书》",
     "“非淡泊无以明志，非宁静无以致远。”"
   ],
-    "wangweiLin": [
-      "王维《鹿柴》",
-      "“返景入深林，复照青苔上。”"
-    ],
-    "chunri": [
-      "朱熹《春日》",
-      "“胜日寻芳泗水滨，无边光景一时新。”"
-    ],
+  "wangweiLin": [
+    "王维《鹿柴》",
+    "“返景入深林，复照青苔上。”"
+  ],
+  "chunri": [
+    "朱熹《春日》",
+    "“胜日寻芳泗水滨，无边光景一时新。”"
+  ],
   "chengjiang": [
     "谢朓《晚登三山还望京邑》",
     "“余霞散成绮，澄江静如练。”"
@@ -926,14 +926,14 @@
     "王勃《滕王阁序》",
     "“时维九月，序属三秋。”"
   ],
-    "qinghe": [
-      "谢灵运《游赤石进帆海》",
-      "“首夏犹清和，芳草亦未歇。”"
-    ],
-    "lanting": [
-      "王羲之《兰亭集序》",
-      "“是日也，天朗气清，惠风和畅。”"
-    ],
+  "qinghe": [
+    "谢灵运《游赤石进帆海》",
+    "“首夏犹清和，芳草亦未歇。”"
+  ],
+  "lanting": [
+    "王羲之《兰亭集序》",
+    "“是日也，天朗气清，惠风和畅。”"
+  ],
   "ange": [
     "屈原《楚辞·九歌·东皇太一》",
     "“疏缓节兮安歌，陈竽瑟兮浩倡。”"
@@ -1005,6 +1005,10 @@
   "qingchen": [
     "王维《送元二使安西》",
     "“渭城朝雨浥轻尘，客舍青青柳色新。”"
+  ],
+  "qingchenMorning": [
+    "常建《题破山寺后禅院》",
+    "“清晨入古寺，初日照高林。”"
   ],
   "lisaoZhao": [
     "屈原《楚辞·离骚》",
@@ -1101,6 +1105,98 @@
   "chunmian": [
     "孟浩然《春晓》",
     "“春眠不觉晓，处处闻啼鸟。”"
+  ],
+  "mufang": [
+    "屈原《楚辞·九歌·云中君》",
+    "“浴兰汤兮沐芳，华采衣兮若英。”"
+  ],
+  "chiri": [
+    "杜甫《绝句二首·其一》",
+    "“迟日江山丽，春风花草香。”"
+  ],
+  "baopu": [
+    "《道德经》第十九章",
+    "“见素抱朴，少私寡欲。”"
+  ],
+  "jinse": [
+    "李商隐《锦瑟》",
+    "“锦瑟无端五十弦，一弦一柱思华年。”"
+  ],
+  "yedu": [
+    "韦应物《滁州西涧》",
+    "“春潮带雨晚来急，野渡无人舟自横。”"
+  ],
+  "yanluan": [
+    "李白《蜀道难》",
+    "“青泥何盘盘，百步九折萦岩峦。”"
+  ],
+  "zhixin": [
+    "《论语·为政》",
+    "“温故而知新，可以为师矣。”"
+  ],
+  "songjian": [
+    "王维《山居秋暝》",
+    "“明月松间照，清泉石上流。”"
+  ],
+  "huanghelou": [
+    "崔颢《黄鹤楼》",
+    "“晴川历历汉阳树，芳草萋萋鹦鹉洲。”"
+  ],
+  "tingzhong": [
+    "《古诗十九首·庭中有奇树》",
+    "“庭中有奇树，绿叶发华滋。”"
+  ],
+  "daoshengyi": [
+    "《道德经》第四十二章",
+    "“道生一，一生二，二生三，三生万物。”"
+  ],
+  "luming": [
+    "《诗经·小雅·鹿鸣》",
+    "“呦呦鹿鸣，食野之苹。我有嘉宾，鼓瑟吹笙。”"
+  ],
+  "yuebailu": [
+    "杜甫《月夜忆舍弟》",
+    "“露从今夜白，月是故乡明。”"
+  ],
+  "qingrou": [
+    "杨万里《小池》",
+    "“泉眼无声惜细流，树阴照水爱晴柔。”"
+  ],
+  "taoyao": [
+    "《诗经·周南·桃夭》",
+    "“桃之夭夭，灼灼其华。”"
+  ],
+  "lihua": [
+    "岑参《白雪歌送武判官归京》",
+    "“忽如一夜春风来，千树万树梨花开。”"
+  ],
+  "zhuxuan": [
+    "王维《山居秋暝》",
+    "“竹喧归浣女，莲动下渔舟。”"
+  ],
+  "yiyi": [
+    "《诗经·小雅·采薇》",
+    "“昔我往矣，杨柳依依。”"
+  ],
+  "liuying": [
+    "杜牧《秋夕》",
+    "“银烛秋光冷画屏，轻罗小扇扑流萤。”"
+  ],
+  "wutong": [
+    "《诗经·大雅·卷阿》",
+    "“凤凰鸣矣，于彼高冈。梧桐生矣，于彼朝阳。”"
+  ],
+  "bailu": [
+    "杜甫《绝句四首·其三》",
+    "“两个黄鹂鸣翠柳，一行白鹭上青天。”"
+  ],
+  "jiating": [
+    "白居易《钱塘湖春行》",
+    "“孤山寺北贾亭西，水面初平云脚低。”"
+  ],
+  "rixijia": [
+    "陶渊明《饮酒·其五》",
+    "“山气日夕佳，飞鸟相与还。”"
   ]
 };
 
@@ -1394,6 +1490,102 @@
           "清爽自然"
         ],
         "note": ""
+      },
+      {
+        "char": "朝",
+        "pinyin": "zhāo",
+        "tone": 1,
+        "meaning": "清晨、朝气",
+        "source": "qingchen",
+        "styles": [
+          "松弛明亮",
+          "清爽自然"
+        ],
+        "note": ""
+      },
+      {
+        "char": "沐",
+        "pinyin": "mù",
+        "tone": 4,
+        "meaning": "润泽、清新",
+        "source": "mufang",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "迟",
+        "pinyin": "chí",
+        "tone": 2,
+        "meaning": "从容、春日",
+        "source": "chiri",
+        "styles": [
+          "松弛明亮",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "朴",
+        "pinyin": "pǔ",
+        "tone": 3,
+        "meaning": "质朴、本真",
+        "source": "baopu",
+        "styles": [
+          "简约克制",
+          "现代书卷"
+        ],
+        "note": ""
+      },
+      {
+        "char": "弦",
+        "pinyin": "xián",
+        "tone": 2,
+        "meaning": "弦音、感受力",
+        "source": "jinse",
+        "styles": [
+          "现代书卷",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "渡",
+        "pinyin": "dù",
+        "tone": 4,
+        "meaning": "渡越、行动",
+        "source": "yedu",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "岩",
+        "pinyin": "yán",
+        "tone": 2,
+        "meaning": "山岩、稳定",
+        "source": "yanluan",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "新",
+        "pinyin": "xīn",
+        "tone": 1,
+        "meaning": "更新、求知",
+        "source": "zhixin",
+        "styles": [
+          "松弛明亮",
+          "现代书卷"
+        ],
+        "note": ""
       }
     ],
     "tail": [
@@ -1682,6 +1874,102 @@
         "styles": [
           "清爽自然",
           "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "照",
+        "pinyin": "zhào",
+        "tone": 4,
+        "meaning": "照见、明朗",
+        "source": "songjian",
+        "styles": [
+          "松弛明亮",
+          "清爽自然"
+        ],
+        "note": ""
+      },
+      {
+        "char": "墨",
+        "pinyin": "mò",
+        "tone": 4,
+        "meaning": "书写、墨色",
+        "source": "momei",
+        "styles": [
+          "现代书卷",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "洲",
+        "pinyin": "zhōu",
+        "tone": 1,
+        "meaning": "水洲、开阔",
+        "source": "huanghelou",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "庭",
+        "pinyin": "tíng",
+        "tone": 2,
+        "meaning": "庭院、安定",
+        "source": "tingzhong",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "越",
+        "pinyin": "yuè",
+        "tone": 4,
+        "meaning": "清越、明亮",
+        "source": "lijiYue",
+        "styles": [
+          "松弛明亮",
+          "现代书卷"
+        ],
+        "note": ""
+      },
+      {
+        "char": "宁",
+        "pinyin": "níng",
+        "tone": 2,
+        "meaning": "安宁、有定力",
+        "source": "shijingNing",
+        "styles": [
+          "简约克制",
+          "现代书卷"
+        ],
+        "note": ""
+      },
+      {
+        "char": "霁",
+        "pinyin": "jì",
+        "tone": 4,
+        "meaning": "雨雪后放晴",
+        "source": "jise",
+        "styles": [
+          "松弛明亮",
+          "现代书卷"
+        ],
+        "note": "“霁”读 jì，需要偶尔说明为雨字头。"
+      },
+      {
+        "char": "一",
+        "pinyin": "yī",
+        "tone": 1,
+        "meaning": "专一、起点",
+        "source": "daoshengyi",
+        "styles": [
+          "简约克制",
+          "现代书卷"
         ],
         "note": ""
       }
@@ -1976,6 +2264,102 @@
           "松弛明亮"
         ],
         "note": ""
+      },
+      {
+        "char": "晨",
+        "pinyin": "chén",
+        "tone": 2,
+        "meaning": "清晨、新开始",
+        "source": "qingchenMorning",
+        "styles": [
+          "松弛明亮",
+          "清爽自然"
+        ],
+        "note": ""
+      },
+      {
+        "char": "鹿",
+        "pinyin": "lù",
+        "tone": 4,
+        "meaning": "灵动、生机",
+        "source": "luming",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "露",
+        "pinyin": "lù",
+        "tone": 4,
+        "meaning": "清露、明净",
+        "source": "yuebailu",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "柔",
+        "pinyin": "róu",
+        "tone": 2,
+        "meaning": "温和而有韧性",
+        "source": "qingrou",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "桃",
+        "pinyin": "táo",
+        "tone": 2,
+        "meaning": "桃花、生长",
+        "source": "taoyao",
+        "styles": [
+          "松弛明亮",
+          "清爽自然"
+        ],
+        "note": ""
+      },
+      {
+        "char": "叶",
+        "pinyin": "yè",
+        "tone": 4,
+        "meaning": "枝叶、生机",
+        "source": "tingzhong",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "梨",
+        "pinyin": "lí",
+        "tone": 2,
+        "meaning": "梨花、清朗",
+        "source": "lihua",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "竹",
+        "pinyin": "zhú",
+        "tone": 2,
+        "meaning": "竹影、舒展",
+        "source": "zhuxuan",
+        "styles": [
+          "清爽自然",
+          "现代书卷"
+        ],
+        "note": ""
       }
     ],
     "tail": [
@@ -2266,6 +2650,102 @@
           "松弛明亮"
         ],
         "note": ""
+      },
+      {
+        "char": "依",
+        "pinyin": "yī",
+        "tone": 1,
+        "meaning": "依依、生机相连",
+        "source": "yiyi",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "萤",
+        "pinyin": "yíng",
+        "tone": 2,
+        "meaning": "流萤、微光",
+        "source": "liuying",
+        "styles": [
+          "松弛明亮",
+          "清爽自然"
+        ],
+        "note": ""
+      },
+      {
+        "char": "笙",
+        "pinyin": "shēng",
+        "tone": 1,
+        "meaning": "笙乐、表达",
+        "source": "luming",
+        "styles": [
+          "现代书卷",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "桐",
+        "pinyin": "tóng",
+        "tone": 2,
+        "meaning": "梧桐、生长",
+        "source": "wutong",
+        "styles": [
+          "清爽自然",
+          "现代书卷"
+        ],
+        "note": ""
+      },
+      {
+        "char": "鹭",
+        "pinyin": "lù",
+        "tone": 4,
+        "meaning": "白鹭、轻盈",
+        "source": "bailu",
+        "styles": [
+          "清爽自然",
+          "松弛明亮"
+        ],
+        "note": ""
+      },
+      {
+        "char": "亭",
+        "pinyin": "tíng",
+        "tone": 2,
+        "meaning": "湖亭、停驻",
+        "source": "jiating",
+        "styles": [
+          "清爽自然",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "悠",
+        "pinyin": "yōu",
+        "tone": 1,
+        "meaning": "悠然、从容",
+        "source": "youran",
+        "styles": [
+          "松弛明亮",
+          "简约克制"
+        ],
+        "note": ""
+      },
+      {
+        "char": "夕",
+        "pinyin": "xī",
+        "tone": 1,
+        "meaning": "日夕、安静",
+        "source": "rixijia",
+        "styles": [
+          "简约克制",
+          "清爽自然"
+        ],
+        "note": ""
       }
     ]
   }
@@ -2276,56 +2756,72 @@
     const blockedNames = new Set(["清真", "清明", "昭然"]);
     const preferredPairs = {
   "boy": {
-    "知": "远澄舟野川安和屿白言序星南原朗山",
-    "景": "远澄舟野川安和屿白清星南森原朗山",
-    "云": "远澄舟野川安和屿白清星南岸原朗尘山",
-    "星": "远澄舟野川安和屿白清南森岸原朗尘山",
-    "时": "远澄舟野川安和屿白清序星南原朗山",
-    "清": "远澄舟野川安和屿初白言序星南森岸原朗尘砚松山",
-    "江": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山",
-    "言": "远澄舟川安和屿初白清序星南原朗砚山",
-    "书": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山",
-    "牧": "远澄舟野川安和屿初白言清序星南森岸原朗尘山",
-    "泊": "远澄舟野川安和屿初白言清序星南岸原朗山",
-    "屿": "远澄舟野川安和初白言清序星南森岸原朗尘山",
-    "序": "远澄舟野川安和屿初白言清星南森岸原朗砚松山",
-    "砚": "远澄舟野川安和屿初白言清序星南森岸原朗尘松山",
-    "望": "远澄舟野川安和屿白清序星南岸原朗山",
-    "川": "远澄舟野安和屿初白言清序星南森岸原朗尘砚松山",
-    "叙": "远澄舟野川安和屿初白言清序星南原朗山",
-    "临": "远澄舟野川安和屿初白清星南岸原朗尘山",
-    "向": "远澄舟野川安和屿初白清星南原朗山",
-    "初": "远澄舟野川安和屿白言清序星南森岸原朗尘砚松山",
-    "林": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山",
-    "松": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚山",
-    "行": "远澄舟野川安和屿初白清序星南岸原朗尘山",
-    "闻": "远澄舟野川安和屿初白言清序星南原朗山"
+    "知": "远澄舟野川安和屿白言序星南原朗山照墨洲庭越宁霁一",
+    "景": "远澄舟野川安和屿白清星南森原朗山照墨洲庭越宁霁一",
+    "云": "远澄舟野川安和屿白清星南岸原朗尘山照墨洲庭越宁霁一",
+    "星": "远澄舟野川安和屿白清南森岸原朗尘山照墨洲庭越宁霁一",
+    "时": "远澄舟野川安和屿白清序星南原朗山照墨洲庭越宁霁一",
+    "清": "远澄舟野川安和屿初白言序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "江": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "言": "远澄舟川安和屿初白清序星南原朗砚山照墨洲庭越宁霁一",
+    "书": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "牧": "远澄舟野川安和屿初白言清序星南森岸原朗尘山照墨洲庭越宁霁一",
+    "泊": "远澄舟野川安和屿初白言清序星南岸原朗山照墨洲庭越宁霁一",
+    "屿": "远澄舟野川安和初白言清序星南森岸原朗尘山照墨洲庭越宁霁一",
+    "序": "远澄舟野川安和屿初白言清星南森岸原朗砚松山照墨洲庭越宁霁一",
+    "砚": "远澄舟野川安和屿初白言清序星南森岸原朗尘松山照墨洲庭越宁霁一",
+    "望": "远澄舟野川安和屿白清序星南岸原朗山照墨洲庭越宁霁一",
+    "川": "远澄舟野安和屿初白言清序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "叙": "远澄舟野川安和屿初白言清序星南原朗山照墨洲庭越宁霁一",
+    "临": "远澄舟野川安和屿初白清星南岸原朗尘山照墨洲庭越宁霁一",
+    "向": "远澄舟野川安和屿初白清星南原朗山照墨洲庭越宁霁一",
+    "初": "远澄舟野川安和屿白言清序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "林": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚松山照墨洲庭越宁霁一",
+    "松": "远澄舟野川安和屿初白言清序星南森岸原朗尘砚山照墨洲庭越宁霁一",
+    "行": "远澄舟野川安和屿初白清序星南岸原朗尘山照墨洲庭越宁霁一",
+    "闻": "远澄舟野川安和屿初白言清序星南原朗山照墨洲庭越宁霁一",
+    "朝": "远澄舟野川安和初白清星南森岸原朗山照墨洲庭越宁霁一",
+    "沐": "远澄舟野川安和屿初白清星南森岸原朗山照洲庭越宁霁一",
+    "迟": "远澄舟野川安和初白清序星南原朗尘山照墨洲庭越宁霁一",
+    "朴": "远澄舟野川安和屿初白言清序星南森岸原朗尘山照墨洲庭越宁霁一",
+    "弦": "远澄舟野川安和屿初白言清序星南岸原朗尘山照墨洲庭越宁霁一",
+    "渡": "远澄舟野川安和屿初白清星南岸原朗山照墨洲庭越宁霁一",
+    "岩": "远澄舟野川安和屿初白清星南森岸原朗山照墨洲庭越宁霁一",
+    "新": "远澄舟野川安和屿初白言清序星南森岸原朗尘山照墨洲庭越宁霁一"
   },
   "girl": {
-    "知": "夏舒禾宁遥乔雨晴白溪澜微越月音棠枝岚汀语霁川",
-    "云": "夏舒禾宁遥乔雨晴白溪澜月江音棠枝岚汀霁眠川",
-    "清": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "昭": "夏舒禾宁遥乔晴白溪澜微越月音棠枝岚汀霁川",
-    "星": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "南": "夏舒禾宁遥乔雨晴白溪澜月江棠枝岚汀霁川",
-    "时": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "初": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "月": "夏舒禾宁遥乔雨晴白溪澜微越江音棠枝岚汀语霁眠川",
-    "若": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "安": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "江": "夏舒禾宁遥乔雨晴白溪澜微越月音棠枝岚汀语霁川",
-    "听": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "映": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "晚": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "雨": "夏舒禾宁遥乔晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "见": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "青": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "向": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "亦": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "林": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川",
-    "秋": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川",
-    "汀": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚语霁眠川",
-    "溪": "夏舒禾宁遥乔雨晴白澜微越月江音棠枝岚汀语霁眠川"
+    "知": "夏舒禾宁遥乔雨晴白溪澜微越月音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "云": "夏舒禾宁遥乔雨晴白溪澜月江音棠枝岚汀霁眠川依萤笙桐鹭亭悠夕",
+    "清": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "昭": "夏舒禾宁遥乔晴白溪澜微越月音棠枝岚汀霁川依萤笙桐鹭亭悠夕",
+    "星": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "南": "夏舒禾宁遥乔雨晴白溪澜月江棠枝岚汀霁川依萤笙桐鹭亭悠夕",
+    "时": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "初": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "月": "夏舒禾宁遥乔雨晴白溪澜微越江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "若": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "安": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "江": "夏舒禾宁遥乔雨晴白溪澜微越月音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "听": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "映": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "晚": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "雨": "夏舒禾宁遥乔晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "见": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "青": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "向": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "亦": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "林": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "秋": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁川依萤笙桐鹭亭悠夕",
+    "汀": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚语霁眠川依萤笙桐鹭亭悠夕",
+    "溪": "夏舒禾宁遥乔雨晴白澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "晨": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "鹿": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐亭悠夕",
+    "露": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "柔": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "桃": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "叶": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "梨": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕",
+    "竹": "夏舒禾宁遥乔雨晴白溪澜微越月江音棠枝岚汀语霁眠川依萤笙桐鹭亭悠夕"
   }
 };
     const plainPinyin = value => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -2351,9 +2847,84 @@
       })).filter(Boolean);
     }
 
-    const generatedPools = {
+    const completeGeneratedPools = {
       boy: allGenerated("boy").filter(item => !item.exact),
       girl: allGenerated("girl").filter(item => !item.exact)
+    };
+
+    function stableHash(value) {
+      let hash = 2166136261;
+      for (const char of value) {
+        hash ^= char.charCodeAt(0);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0;
+    }
+
+    function selectDiversePool(gender, limit = 250, maxUse = 10, excludedNames = new Set()) {
+      const firstChars = new Map();
+      const lastChars = new Map();
+      const firstSounds = new Map();
+      const lastSounds = new Map();
+      const fullSounds = new Set();
+      const pairs = new Set();
+      const addCount = (map, key) => map.set(key, (map.get(key) || 0) + 1);
+
+      names.filter(item => item.gender === gender).forEach(item => {
+        const chars = [...item.name].slice(-2);
+        const sounds = item.pinyin.split(" ").slice(-2).map(plainPinyin);
+        addCount(firstChars, chars[0]);
+        addCount(lastChars, chars[1]);
+        addCount(firstSounds, sounds[0]);
+        addCount(lastSounds, sounds[1]);
+        fullSounds.add(sounds.join(" "));
+        pairs.add(chars.join(""));
+      });
+
+      const candidates = [...completeGeneratedPools[gender]];
+      const selected = [];
+      while (selected.length < limit && candidates.length) {
+        let bestIndex = -1;
+        let bestScore = Infinity;
+        candidates.forEach((item, index) => {
+          if (excludedNames.has(item.name)) return;
+          const firstSound = plainPinyin(item.first.pinyin);
+          const lastSound = plainPinyin(item.last.pinyin);
+          const fullSound = `${firstSound} ${lastSound}`;
+          const reverse = item.last.char + item.first.char;
+          if (fullSounds.has(fullSound) || pairs.has(reverse)) return;
+          if ((firstChars.get(item.first.char) || 0) >= maxUse || (lastChars.get(item.last.char) || 0) >= maxUse) return;
+          if ((firstSounds.get(firstSound) || 0) >= maxUse || (lastSounds.get(lastSound) || 0) >= maxUse) return;
+          const score =
+            (firstChars.get(item.first.char) || 0) + (lastChars.get(item.last.char) || 0) +
+            (firstSounds.get(firstSound) || 0) + (lastSounds.get(lastSound) || 0) -
+            (item.compatible ? 2 : 0);
+          if (score < bestScore || (score === bestScore && stableHash(item.id) < stableHash(candidates[bestIndex]?.id || ""))) {
+            bestScore = score;
+            bestIndex = index;
+          }
+        });
+        if (bestIndex < 0) break;
+        const item = candidates.splice(bestIndex, 1)[0];
+        const firstSound = plainPinyin(item.first.pinyin);
+        const lastSound = plainPinyin(item.last.pinyin);
+        const fullSound = `${firstSound} ${lastSound}`;
+        const pair = item.first.char + item.last.char;
+        selected.push(item);
+        addCount(firstChars, item.first.char);
+        addCount(lastChars, item.last.char);
+        addCount(firstSounds, firstSound);
+        addCount(lastSounds, lastSound);
+        fullSounds.add(fullSound);
+        pairs.add(pair);
+      }
+      return selected;
+    }
+
+    const diverseBoyPool = selectDiversePool("boy");
+    const generatedPools = {
+      boy: diverseBoyPool,
+      girl: selectDiversePool("girl", 250, 10, new Set(diverseBoyPool.map(item => item.name)))
     };
     const curatedCounts = {
       boy: names.filter(item => item.gender === "boy").length,
@@ -2362,6 +2933,10 @@
     const totalGenderCounts = {
       boy: generatedPools.boy.length + curatedCounts.boy,
       girl: generatedPools.girl.length + curatedCounts.girl
+    };
+    const completeGenderCounts = {
+      boy: completeGeneratedPools.boy.length + curatedCounts.boy,
+      girl: completeGeneratedPools.girl.length + curatedCounts.girl
     };
 
     const cards = document.querySelector("#cards");
@@ -2384,12 +2959,13 @@
     const showNames = document.querySelector("#showNames");
     const showFavorites = document.querySelector("#showFavorites");
     let randomIds = null;
+    let curatedOffset = 0;
     const generatedPageSize = 100;
     let generatedDeck = [];
     let generatedPage = 0;
     let favorites = new Set(JSON.parse(localStorage.getItem("yin-baby-name-favorites") || "[]"));
     const favoriteCatalog = new Map(names.map(item => [item.id, { type: "curated", item }]));
-    Object.values(generatedPools).flat().forEach(item => {
+    Object.values(completeGeneratedPools).flat().forEach(item => {
       if (!item.exact) favoriteCatalog.set(item.id, { type: "generated", item });
     });
 
@@ -2493,25 +3069,23 @@
     }
 
     function currentGeneratedPool() {
-      return generatedPools[genGender.value].filter(item => {
+      const pool = genQuality.value === "diverse" ? generatedPools[genGender.value] : completeGeneratedPools[genGender.value];
+      return pool.filter(item => {
         const styleMatch = genStyle.value === "all" || item.styles.includes(genStyle.value);
-        const qualityMatch = genQuality.value === "all" || item.compatible || item.exact;
+        const qualityMatch = genQuality.value !== "strict" || item.compatible;
         return styleMatch && qualityMatch;
       });
     }
 
-    function shuffle(items) {
-      const result = [...items];
-      for (let index = result.length - 1; index > 0; index--) {
-        const swapIndex = Math.floor(Math.random() * (index + 1));
-        [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
-      }
-      return result;
+    function stableOrder(items, salt = "") {
+      return [...items].sort((a, b) =>
+        stableHash(`${salt}|${a.id}`) - stableHash(`${salt}|${b.id}`) || a.id.localeCompare(b.id)
+      );
     }
 
     function separateAdjacent(items) {
       for (let attempt = 0; attempt < 50; attempt++) {
-        const remaining = shuffle(items);
+        const remaining = stableOrder(items, `adjacent-${attempt}`);
         const result = [];
         while (remaining.length) {
           const previous = result[result.length - 1];
@@ -2527,7 +3101,7 @@
             .sort((a, b) => {
               const scoreA = firstCounts.get(a.item.first.char) + lastCounts.get(a.item.last.char);
               const scoreB = firstCounts.get(b.item.first.char) + lastCounts.get(b.item.last.char);
-              return scoreB - scoreA;
+              return scoreB - scoreA || stableHash(`${attempt}|${a.item.id}`) - stableHash(`${attempt}|${b.item.id}`);
             });
           if (!candidates.length) break;
           result.push(remaining.splice(candidates[0].index, 1)[0]);
@@ -2538,7 +3112,7 @@
     }
 
     function balancedShuffle(items) {
-      const remaining = shuffle(items);
+      const remaining = stableOrder(items, "pages");
       const ordered = [];
       while (remaining.length) {
         const page = [];
@@ -2561,7 +3135,7 @@
               bestIndexes.push(index);
             }
           });
-          const chosenIndex = bestIndexes[Math.floor(Math.random() * bestIndexes.length)];
+          const chosenIndex = bestIndexes[0];
           const chosen = remaining.splice(chosenIndex, 1)[0];
           page.push(chosen);
           firstCounts.set(chosen.first.char, (firstCounts.get(chosen.first.char) || 0) + 1);
@@ -2579,9 +3153,8 @@
       const batch = generatedDeck.slice(start, start + generatedPageSize);
       generatedCards.innerHTML = batch.length ? batch.map(generatedCard).join("") : '<div class="empty">当前条件没有可用组合，请放宽风格或组合范围。</div>';
       const genderText = genGender.value === "boy" ? "男孩" : "女孩";
-      const fullPoolCount = totalGenderCounts[genGender.value];
       const rangeText = batch.length ? `${start + 1}–${start + batch.length}` : "0";
-      generatorMeta.innerHTML = `<span><strong>${genderText}总候选：</strong>${fullPoolCount} 个</span><span><strong>随机分页池：</strong>${generatedDeck.length} 个</span><span><strong>人工精选区：</strong>${curatedCounts[genGender.value]} 个</span><span><strong>每页：</strong>100 个</span><span><strong>本页范围：</strong>${rangeText}</span><span><strong>规则：</strong>完整姓名零重复，相同单字均匀分散</span>`;
+      generatorMeta.innerHTML = `<span><strong>${genderText}低相似池：</strong>${totalGenderCounts[genGender.value]} 个（含精选）</span><span><strong>完整组合库：</strong>${completeGenderCounts[genGender.value]} 个</span><span><strong>当前分页池：</strong>${generatedDeck.length} 个</span><span><strong>人工精选区：</strong>${curatedCounts[genGender.value]} 个</span><span><strong>本页范围：</strong>${rangeText}</span><span><strong>规则：</strong>固定分页、同音去重、反向去重、单字限频</span>`;
       pageStatuses.forEach(status => { status.textContent = `第 ${generatedPage + 1} / ${totalPages} 页`; });
       pageButtons.forEach(button => {
         button.disabled = button.dataset.page === "prev" ? generatedPage === 0 : generatedPage >= totalPages - 1 || !generatedDeck.length;
@@ -2643,7 +3216,7 @@
     function render() {
       const list = currentItems();
       cards.innerHTML = list.length ? list.map(card).join("") : '<div class="empty">没有符合条件的名字，换个关键词或清除筛选试试。</div>';
-      heading.textContent = randomIds ? "随机灵感" : (labels[filter.value] || filter.value);
+      heading.textContent = randomIds ? "精选分组浏览" : (labels[filter.value] || filter.value);
       count.textContent = `显示 ${list.length} 个`;
     }
 
@@ -2652,7 +3225,9 @@
     document.querySelector("#random").addEventListener("click", () => {
       randomIds = null;
       const pool = currentItems();
-      randomIds = new Set([...pool].sort(() => Math.random() - .5).slice(0, 6).map(item => item.id));
+      const batch = [...pool.slice(curatedOffset, curatedOffset + 6), ...pool.slice(0, Math.max(0, curatedOffset + 6 - pool.length))];
+      curatedOffset = pool.length ? (curatedOffset + 6) % pool.length : 0;
+      randomIds = new Set(batch.map(item => item.id));
       render();
     });
     [genGender, genStyle, genQuality].forEach(control => control.addEventListener("change", generateNames));
@@ -2669,7 +3244,7 @@
     showFavorites.addEventListener("click", () => { location.hash = "favorites"; });
     document.querySelector("#backToNames").addEventListener("click", () => { location.hash = "names"; });
     window.addEventListener("hashchange", syncViewFromHash);
-    document.querySelector("#poolCount").textContent = `男孩 ${totalGenderCounts.boy} 个 · 女孩 ${totalGenderCounts.girl} 个`;
+    document.querySelector("#poolCount").textContent = `低相似：男孩 ${totalGenderCounts.boy} 个 · 女孩 ${totalGenderCounts.girl} 个`;
     render();
     generateNames();
     renderFavorites();
