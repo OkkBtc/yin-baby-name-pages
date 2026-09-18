@@ -2509,6 +2509,34 @@
       return result;
     }
 
+    function separateAdjacent(items) {
+      for (let attempt = 0; attempt < 50; attempt++) {
+        const remaining = shuffle(items);
+        const result = [];
+        while (remaining.length) {
+          const previous = result[result.length - 1];
+          const firstCounts = new Map();
+          const lastCounts = new Map();
+          remaining.forEach(item => {
+            firstCounts.set(item.first.char, (firstCounts.get(item.first.char) || 0) + 1);
+            lastCounts.set(item.last.char, (lastCounts.get(item.last.char) || 0) + 1);
+          });
+          const candidates = remaining
+            .map((item, index) => ({ item, index }))
+            .filter(({ item }) => !previous || (item.first.char !== previous.first.char && item.last.char !== previous.last.char))
+            .sort((a, b) => {
+              const scoreA = firstCounts.get(a.item.first.char) + lastCounts.get(a.item.last.char);
+              const scoreB = firstCounts.get(b.item.first.char) + lastCounts.get(b.item.last.char);
+              return scoreB - scoreA;
+            });
+          if (!candidates.length) break;
+          result.push(remaining.splice(candidates[0].index, 1)[0]);
+        }
+        if (!remaining.length) return result;
+      }
+      return items;
+    }
+
     function balancedShuffle(items) {
       const remaining = shuffle(items);
       const ordered = [];
@@ -2524,7 +2552,8 @@
             const firstCount = firstCounts.get(item.first.char) || 0;
             const lastCount = lastCounts.get(item.last.char) || 0;
             const adjacentPenalty = (previous?.first.char === item.first.char ? 8 : 0) + (previous?.last.char === item.last.char ? 8 : 0);
-            const score = firstCount + lastCount + adjacentPenalty;
+            const concentrationPenalty = firstCount >= 5 || lastCount >= 5 ? 100 : 0;
+            const score = firstCount + lastCount + adjacentPenalty + concentrationPenalty;
             if (score < bestScore) {
               bestScore = score;
               bestIndexes = [index];
@@ -2538,7 +2567,7 @@
           firstCounts.set(chosen.first.char, (firstCounts.get(chosen.first.char) || 0) + 1);
           lastCounts.set(chosen.last.char, (lastCounts.get(chosen.last.char) || 0) + 1);
         }
-        ordered.push(...page);
+        ordered.push(...separateAdjacent(page));
       }
       return ordered;
     }
